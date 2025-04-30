@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HBD นะเจ้าก้อนกลมๆ 🎉</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fce4ec; /* Pastel pink */
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lock-screen, .main-content {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .lock-screen {
+            display: block;
+        }
+
+        .main-content {
+            display: none;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #f06292; /* Deep pink */
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        /* Password Input Boxes */
+        .password-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .password-box {
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            font-size: 1.1rem;
+            border: 2px solid #f06292;
+            border-radius: 8px;
+            outline: none;
+            text-transform: uppercase;
+        }
+
+        .password-box:focus {
+            border-color: #d81b60;
+            box-shadow: 0 0 5px rgba(216, 27, 96, 0.5);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background: #f06292;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background: #d81b60;
+            transform: scale(1.05);
+        }
+
+        /* Image Slider */
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            margin: 15px auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slides {
+            display: flex;
+            width: 300%; /* 3 images = 300% */
+            height: 100%;
+            animation: slideShow 12s infinite;
+        }
+
+        .slides img {
+            width: 33.33%; /* 3 images = 33.33% */
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes slideShow {
+            0% { transform: translateX(0); }
+            33.33% { transform: translateX(-33.33%); }
+            66.66% { transform: translateX(-66.66%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Flower Animation */
+        .flower {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('https://www.pngall.com/wp-content/uploads/2016/04/Flower-PNG-Clipart.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.7;
+            animation: floatUp 5s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .password-box {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
+
+            .slider {
+                height: 150px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Lock Screen -->
+    <div class="lock-screen" id="lockScreen">
+        <h1>HBD นะเจ้าก้อนกลมๆ 🎂</h1>
+        <p>ใส่รหัสแบบกลมๆนะะ</p>
+        <div class="password-container">
+            <input type="tel" class="password-box" maxlength="1" oninput="moveToNext(this, 0)">
+            <input type="tel" class="password-box" maxlength="1" oninput="moveToNext(this, 1)">
+            <input type="tel" class="password-box" maxlength="1" oninput="moveToNext(this, 2)">
+            <input type="tel" class="password-box" maxlength="1" oninput="moveToNext(this, 3)">
+            <input type="tel" class="password-box" maxlength="1" oninput="moveToNext(this, 4)">
+            <input type="tel" class="password-box" maxlength="1" oninput="moveToNext(this, 5)">
+        </div>
+        <button class="btn" onclick="checkPassword()">ปลดล็อกก้อน</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <h1>สุขสันต์วันเกิดนะเจ้าบุ๋ย 💖</h1>
+        <p>วันนี้ก็เป็นวันดีของเจ้ากลมนะขอให้มีความสุขมากๆยิ้มเยอะๆ<br>ขอให้ปีนี้เป็นปีที่กลมขึ้น 20% นะครับจุ๊บๆแถมด้วยก้อนกลมๆ</p>
+        <div class="slider">
+            <div class="slides">
+                <!-- Replace with your hosted image URLs -->
+                <img src="c:\Users\Asus\Downloads\S__9674763_0.jpg" alt="Memory 1">
+                <img src="c:\Users\Asus\Downloads\S__9674760_0.jpg" alt="Memory 2">
+                <img src="c:\Users\Asus\Downloads\S__9674765_0.jpg" alt="Memory 3">
+                <img src="c:\Users\Asus\Downloads\S__9674764_0.jpg" alt="Memory 4">
+                <img src="c:\Users\Asus\Downloads\S__9674762_0.jpg" alt="Memory 5">
+            </div>
+        </div>
+        <button class="btn" onclick="showMessage()">กลมๆ!</button>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" autoplay loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-ukulele.mp3" type="audio/mpeg">
+        เบราว์เซอร์ของคุณไม่รองรับเสียง
+    </audio>
+
+    <script>
+        // Create Flowers
+        for (let i = 0; i < 5; i++) { // Reduced for mobile performance
+            let flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDelay = Math.random() * 4 + 's';
+            document.body.appendChild(flower);
+        }
+
+        // Move to Next Input
+        function moveToNext(current, index) {
+            if (current.value.length === 1 && index < 5) {
+                document.querySelectorAll('.password-box')[index + 1].focus();
+            }
+        }
+
+        // Password Check
+        function checkPassword() {
+            const inputs = document.querySelectorAll('.password-box');
+            const password = Array.from(inputs).map(input => input.value).join('');
+            if (password === '300447') {
+                document.getElementById('lockScreen').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+            } else {
+                alert('รหัสไม่ถูกต้อง! ลองใส่วันกลมๆดู 😊');
+                inputs.forEach(input => input.value = '');
+                inputs[0].focus();
+            }
+        }
+
+        // Special Message
+        function showMessage() {
+            alert('ขอบคุณนะที่ปุ๋ยยังเข้าใจและยังอยู่กับเขาและดูแลเขามาตลอดเค้ามีของขวัญจะให้ถ้าเปิดอ่านได้แล้วก็ทักมาหาเค้านะมีรางวัลให้จุ๊บจุ๊บสุดสวย 😘');
+        }
+
+        // Handle Image Errors
+        document.querySelectorAll('.slides img').forEach(img => {
+            img.onerror = () => {
+                img.src = 'https://via.placeholder.com/400x250?text=Image+Not+Found';
+            };
+        });
+    </script>
+</body>
+</html>
